@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<link rel="stylesheet" href="../css/style.css" />
+	</head>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Exercice 1, formulaire</title>
+	<style>
+		body {
+			width: 960px;
+			margin: 0 auto;
+		}
+
+		form {
+			width: 800px;
+			margin: 0 auto;
+		}
+
+		fieldset {
+			margin-top: 30px;
+			padding-bottom: 20px;
+			width: 800px;
+			box-sizing: border-box;
+		}
+
+		legend {
+			padding: 0 15px;
+		}
+
+		label {
+			display: inline-block;
+			width: 160px;
+			padding: 15px 0;
+		}
+
+		input,
+		select {
+			display: inline-block;
+			width: 300px;
+			line-height: 24px;
+			padding: 0 10px;
+		}
+
+		input[type='checkbox'] {
+			width: 30px;
+		}
+
+		input[type='checkbox']+label {
+			width: 400px;
+			padding-bottom: 5px;
+		}
+
+		input[type='submit'] {
+			display: block;
+			margin: 10px auto 0;
+			padding: 5px 0;
+		}
+
+		select {
+			box-sizing: content-box;
+			vertical-align: text-top;
+			padding: 5px 10px;
+		}
+
+		textarea {
+			width: 480px;
+			margin: 30px 0 15px;
+			vertical-align: middle;
+		}
+
+		span {
+			display: inline-block;
+			width: 260px;
+			margin-left: 20px;
+			vertical-align: text-top;
+			color: red;
+		}
+
+		p, a {
+			text-align: center
+		}
+	</style>
+	<script>
+		window.addEventListener("load", function () {
+			var f = document.form1;
+			var regExp, erreur = false;
+
+			// la propriété "requis" de l'objet controles n'est pas précisée,
+			// car tous les champs sont obligatoires
+			// et la valeur par défaut de "requis" est true dans la fonction valider
+			var controles = {
+				identifiant: {
+					exp: /^[a-zÀàéèëêô]{8,12}$/,
+					mesErr: "minimum 8 caractères, alphanumériques et minuscules uniquement, premier caractère alphabétique"
+				},
+
+				motDePasse: {
+					exp: /^(?=.*\d.*)(?=.*[%!:&].*)(?=.*[A-Z].*)(?=.*[a-z].*)\S{8,12}$/,
+					mesErr: "minimum 8 caractères, maximum 12, avec au moins un caractère spécial non alphanumérique (comme par exemple: %!:&) une lettre majuscule, une lettre minuscule et un chiffre, et sans caractères 'blancs'"
+				},
+
+				confirmationMotDePasse: {
+					exp: /^(?=.*\d.*)(?=.*[A-Z].*)(?=.*[a-z].*)\S{8,12}$/,
+					mesErr: "minimum 8 caractères, maximum 12, avec au moins un caractère spécial non alphanumérique (comme par exemple: %!:&) une lettre majuscule, une lettre minuscule et un chiffre, et sans caractères 'blancs'"
+				},
+
+				cgu: {},
+			};
+
+
+			/********************************************************                 
+			 *
+			 * gestionnaire de l'évènement change sur le formulaire
+			 *
+			 ********************************************************/
+
+			f.addEventListener("change", function (evt) {
+
+				let nomChamp = evt.target.name;
+				let c = controles[nomChamp];
+				valider(f.elements[nomChamp], c.requis, c.exp, c.mesErr);
+			});
+
+
+			/***********************************************************                 
+			 *
+			 * gestionnaire de l'évènement click sur le bouton d'envoi
+			 *
+			 ***********************************************************/
+
+			f.envoi.addEventListener("click", function (evt) {
+				erreur = false;
+
+				/* validation de tous les champs
+				============================= */
+
+				for (let nomChamp in controles) {
+					let c = controles[nomChamp];
+					valider(f.elements[nomChamp], c.requis, c.exp, c.mesErr);
+				}
+
+				/* envoi du formulaire si aucune erreur
+				==================================== */
+
+				if (erreur) evt.preventDefault();
+			});
+
+
+			/****************************************************                 
+			 *
+			 * fonction de validation commune à tous les champs 
+			 *
+			 ****************************************************/
+
+			/**
+			 * fonction de validation d'un champ
+			 *  
+			 * @params e         = élément du formulaire à contrôler
+			 *         requis    = true si champ obligatoire, false sinon
+			 *         regExp    = expression régulière (optionnel)
+			 *         msgRegExp = message d'erreur si les conditions ne sont pas respectées (optionnel)
+			 */
+			function valider(e, requis = true, regExp = null, msgRegExp = null) {
+
+				var msgErr = "";
+
+				/* contrôles successifs selon les paramètres
+				========================================= */
+
+				var val = e.value.trim();
+				if (val === "") {
+					if (requis) msgErr = "Obligatoire";
+				} else {
+					if (regExp !== null) {
+						if (!regExp.test(val)) {
+							msgErr = msgRegExp;
+						}
+					}
+				}
+
+				/* création dynamique d'un élément SPAN s'il n'existe pas
+				pour y insérer le message d'erreur (msgErr)
+				qui est réinitialisé à vide s'il n'y a pas d'erreur 
+				====================================================== */
+
+				if (typeof e.length !== "undefined") { // radio boutons
+					e = e.value = val;
+				}
+
+				if (e.nextSibling.nodeName !== "SPAN") {
+					e.parentNode.insertBefore(document.createElement("span"),
+						e.nextSibling);
+				}
+
+				e.nextSibling.innerHTML = msgErr;
+
+				/* si erreur (message d'erreur non vide)
+				on met la variable globale erreur à true
+				pour signifier qu'il y a au moins un champ erroné
+				et empêcher l'envoi des données au serveur
+				================================================= */
+
+				if (msgErr !== "") erreur = true;
+			}
+		});
+
+		/*  caractéristiques des contrôles :
+
+			tous les champs sont obligatoires, en plus de ces contrôles spécifiques :
+
+			--- identifiant            : minimum 8 caractères, alphanumériques et minuscules uniquement,
+                                         premier caractère alphabétique 
+			--- motDePasse             : minimum 8 caractères, maximum 12,
+                               			avec au moins un caractère spécial non alphanumérique (comme par exemple: %!:&)
+                                         une lettre majuscule, une lettre minuscule et un chiffre,
+                                         et sans caractères "blancs"
+			--- confirmationMotDePasse : identique au champ précédent
+			--- cgu                    : case qui doit être cochée
+	*/
+	</script>
+</head>
+
+<body>
+	<form name="form1" action="" method="get">
+		<fieldset>
+			<legend><b>Inscription</b></legend>
+
+			<label for="identifiant">Identifiant :</label>
+			<input type="text" name="identifiant" id="identifiant" maxlength="100" placeholder="Votre identifiant">
+			<span id="errIdentifiant"></span>
+			<br>
+
+			<label for="motDePasse">Mot de passe :</label>
+			<input type="password" name="motDePasse" id="motDePasse" maxlength="100" placeholder="Votre mot de passe">
+			<span id="errMotDePasse"></span>
+			<br>
+
+			<label for="confirmationMotDePasse">Confirmation :</label>
+			<input type="password" name="confirmationMotDePasse" id="confirmationMotDePasse" maxlength="100"
+				placeholder="Confirmer votre mot de passe">
+			<span id="errConfirmationMotDePasse"></span>
+			<br>
+
+			<input type="checkbox" name="cgu" id="cgu">
+			<label for="cgu">J'ai lu et j'accepte les conditions générales d'utilisation.</label>
+			<br>
+			<span id="errCgu"></span>
+		</fieldset>
+
+		<p>Tous les champs sont obligatoires.</p>
+		<input type="submit" name="envoi" value="Envoyer">
+		<p><a href="index.html">Retour</a></p>
+	</form>
+	
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!doctype HTML>
+<html>
+<head>
+  <!-- Ajustement de la taille du viewport-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Importation des feuilles de style-->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animation.css">
+  <style>
+    p, a {
+  text-align: center;
+  margin: 50vh auto;
+}
+</style>
+  <!-- Importation des modules js-->
+  <script type='module' src="./mjs/main.mjs"></script>
+</head>
+<body>
+  <header>
+    <h1 class="entete">Fun Web Animations</h1>
+    <h2>Julie Grimala</h2>
+    <div class="menu">
+      <input type="checkbox" id="burgershow" class="burgershow" unchecked>
+      <label for="burgershow" class="nav-tgl">
+        <!-- this span just for the three dividers in the hamburger button-->
+        <span aria-hidden="true"></span>
+      </label>
+
+      <nav class="burgermenu">
+        <div id='btn1' class='button'>
+          <h5>animation 1</h5>
+        </div>
+        <div id='btn2' class='button'>
+          <h5>animation 2</h5>
+        </div>
+        <div id='btn3' class='button'>
+          <h5>animation 3</h5>
+        </div>
+        <div id='btn4' class='button'>
+          <h5>animation 4</h5>
+        </div>
+      </nav>
+     
+    </div>
+    <script>
+      const menu = document.querySelector('.menu');
+      const btn = menu.querySelector('.nav-tgl');
+      btn.addEventListener('click', evt => {
+        if (menu.className.indexOf('active') === -1) {
+          menu.classList.add('active');
+        } else {
+          menu.classList.remove('active');
+        }
+      })
+    </script>
+  </header>
+  <section id='section1'>
+    <canvas id="canvas"></canvas>
+    <div id=overlay></div>
+  </section>
+  <section id='section2'>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+    <div class="neon">
+      <div class='monCercle'></div>
+    </div>
+  </section>
+  <section id="section3">
+    <figure class="sphere">
+      <span class="shadow">
+    </figure>
+  </section>
+  <section id='section4'>
+    <div class="circle large spin">
+      <div class="circle medium spin2">
+        <div class="circle small spin3"></div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p><a href="../index.html">Retour</a></p>
+  </footer>
+</body>
+</html>

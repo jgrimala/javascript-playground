@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+	<title>Exercice 2 : recherche</title>
+	<style>
+		label {display: block; margin-bottom: 10px;}
+		input {display: block; margin-bottom: 30px; line-height: 24px;}
+		th, td {box-sizing:border-box; width:250px;}
+		td:nth-of-type(3) {text-align: center}
+		td:nth-of-type(4) {text-align: right; padding-right: 100px}
+		p, a {
+			text-align: center
+		}
+	</style>
+	<script src="livres.js"></script>
+	<script src="gererLivres.js"></script>
+	
+</head>
+<body>
+	<form name="frm">
+		<fieldset>
+			<legend><b>Exercice 2</b></legend>
+			<label>Rechercher les livres dont le titre contient cette chaîne :</label>
+			<input type="text" name="titreContient">
+			<label>Rechercher les livres dont le nom de l'auteur contient cette chaîne :</label>
+			<input type="text" name="auteurContient">
+			<label>Rechercher les livres dont l'année de publication est :</label>
+			<input type="text" name="annee">
+			<input type="button" name="rechercher" value="Rechercher", id="button">
+		</fieldset>
+	</form>	
+	<section id="result"></section>
+	<p><a href="index.html">Retour</a></p>
+</body>
+<script>
+	document.frm.addEventListener("click", function(){ 	
+			
+		gererLivres.afficher(document.frm, livres, document.getElementById("result"), document.getElementById("button"));
+	});
+</script>
+</html>

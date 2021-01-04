@@ -1,0 +1,43 @@
+
+
+/*************************** CSS ANIMATIONS ****************************/
+
+
+
+/* Animation sur la grille et les statistiques */
+ #gameboard div{
+	animation-name: boardIn;
+	animation-duration: 0.8s; 
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in; 
+}
+@keyframes boardIn 
+{
+	0% 
+	{
+		opacity: 0;
+	}
+	100% 
+	{
+		opacity: 1;
+	}
+} 
+
+/* Animation sur la grille et les statistiques */
+#statistics div{
+	animation-name: statisticsIn;
+	animation-duration: 1s; 
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in; 
+}
+@keyframes statisticsIn 
+{
+	0% 
+	{
+		opacity: 0;
+	}
+	100% 
+	{
+		opacity: 1;
+	}
+} 

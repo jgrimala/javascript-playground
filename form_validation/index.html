@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Exercice 1</title>
+	<style>
+		body     { width: 960px; margin: 0 auto; }
+		form     { width: 800px; margin: 0 auto; }
+		fieldset { margin-top: 30px; width: 800px; box-sizing: border-box; }
+		label    { display : inline-block; width: 160px; padding: 15px 0; }
+		input,
+		select   { display : inline-block; width: 300px; line-height : 24px; padding: 0 10px; }
+
+		input[type='radio']         { width: 30px; }
+		input[type='radio'] + label { width: 80px; }
+		input[type='submit']        { display: block; margin: 10px auto 0; padding: 10px 0; }
+
+		select   { box-sizing:content-box; vertical-align: text-top; padding: 5px 10px; }
+		textarea { width: 480px; margin: 30px 0 15px; vertical-align: middle; }
+		span     { display: inline-block; width: 260px; margin-left: 20px; vertical-align: text-top; color: red; }
+		p        { text-align: center }
+	</style>
+	<script type="module" src="main.js"></script>
+	<script type="module" src="formulaire.js"></script>
+	<script>
+		console.log("Hello!");
+		
+		
+	/*  valider ce formulaire (ne pas modifier le code HTML)
+		au clic sur le bouton submit et à chaque évènement "change" sur un élément.   
+
+		caractéristiques des contrôles :
+
+			tous les champs sont obligatoires, en plus de ces contrôles spécifiques :
+
+			--- nom               : un ou plusieurs mots alphabétiques séparés par un espace, un tiret ou une apostrophe.
+			--- prenom            : un ou plusieurs mots alphabétiques séparés par un espace ou un tiret.
+			--- courriel          : format standard.
+			--- codeConfidentiel  : 8 caractères minimum sans espace, avec au moins un chiffre, une majuscule et une minuscule.
+			--- codePostal        : sous la forme A1B 2C3, lettres D,F,I,O,Q,U non permises, ainsi que W et Z en première position.
+			--- anneeConstruction : entre 1800 et l'année en cours.
+			--- superficie        : entre 100 et 9999 pi2.
+			--- nbPieces          : de 1 à 20 pièces.
+	*/
+	</script>
+</head>
+
+<body> 
+	<form name="form1" action="" method="get">
+
+		<!-- Premier groupe de composants-->
+		<fieldset>
+			<legend><b>Vos coordonnées</b></legend>
+
+			<label for="nom">Nom :</label>
+			<input type="text"
+				   name="nom"
+				   id="nom"
+				   maxlength="100"
+				   placeholder="Votre nom"><br>
+
+			<label for="prenom">Prénom :</label>
+			<input type="text"
+				   name="prenom"
+				   id="prenom"
+				   maxlength="100"
+				   placeholder="Votre prénom"><br>
+
+			<label for="courriel">Courriel :</label>
+			<input type="text"
+				   name="courriel"
+				   id="courriel"
+				   maxlength="100"
+				   placeholder="Votre courriel"><br>
+
+			<label for="codeConfidentiel">Code confidentiel :</label>
+			<input type="text"
+				   name="codeConfidentiel"
+				   id="codeConfidentiel"
+				   maxlength="100"
+				   placeholder="Votre code confidentiel"><br>
+
+			<input type="radio" name="sexe" id="sexeHomme" value="homme">
+			<label for="sexeHomme">Homme</label>
+			<input type="radio" name="sexe" id="sexeFemme" value="femme">
+			<label for="sexeFemme">Femme</label><br>
+		</fieldset>
+
+
+		<!-- Deuxième groupe de composants-->
+		<fieldset>
+			<legend><b>Logement proposé</b></legend>
+
+			<input type="radio" name="locationAchat" id="location" value="location">
+			<label for="location">Location</label>
+			<input type="radio" name="locationAchat" id="achat" value="achat">
+			<label for="achat">Achat</label><br>
+
+			<label for="type">Type de logement :</label>
+			<select name="type" id="type">
+				<option value=""  >Sélectionnez le type de logement</option>
+				<option value="MA">Maison</option>
+				<option value="CO">Condo </option>
+				<option value="CH">Chalet</option>
+			</select><br>
+
+			<label for="codePostal">Code postal :</label>
+			<input type="text" name="codePostal" id="codePostal" placeholder="Par exemple A1B 2C3"><br>
+
+			<label for="anneeConstruction">Année de construction :</label>
+			<input type="text" name="anneeConstruction" id="anneeConstruction"><br>
+
+			<label for="superficie">Superficie (pi2) :</label>
+			<input type="text" name="superficie" id="superficie"><br>
+
+			<label for="nbPieces">Nombre de pièces :</label>
+			<input type="text" name="nbPieces" id="nbPieces"><br>
+
+			<label for="aProximiteDe">A proximité de :</label>
+			<select name="aProximiteDe[]" id="aProximiteDe" multiple size=5>
+				<option value="AV">Autoroute/ Voie rapide</option>
+				<option value="TC">Transport en commun   </option>
+				<option value="PC">Piste cyclable        </option>					
+				<option value="EP">École primaire        </option>
+				<option value="ES">École secondaire      </option>
+				<option value="CE">Cégep                 </option>
+				<option value="GC">Garderie / CPE        </option>
+				<option value="HO">Hôpital               </option>
+				<option value="PE">Parc / Espace vert    </option>
+			</select><br>
+
+			<textarea name="presentation" rows="5" placeholder="Décrivez les atouts de votre logement"></textarea><br>
+		</fieldset>
+
+		<p>Tous les champs sont obligatoires.</p>
+		<input type="button" name ="envoi" value="Envoyer">
+	</form>
+	<p><a href="../index.html" id="retour">Retour</a></p>
+</body>
+</html>

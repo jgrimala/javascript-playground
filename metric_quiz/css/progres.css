@@ -1,0 +1,52 @@
+/*CSS apparence du cercle de progression*/
+#svg circle 
+{
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 1s ease-out;
+    stroke: #666;
+    stroke-width: 0.6rem;
+}
+
+#svg #bar 
+{
+  stroke: #8B72A3;
+}
+
+#cont 
+{
+  display: block;
+  height: 100px;
+  width: 100px;
+  margin: 2em auto;
+  box-shadow: 0 0 1em rgb(63, 33, 50);
+  border-radius: 100%;
+  position: relative;
+  font-size: 1rem;
+}
+
+#cont:after 
+{
+  position: absolute;
+  display: block;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  box-shadow: inset 0 0 1em rgb(63, 33, 50);
+  content: attr(data-pct)"%";
+  content: '';
+  margin-top: -40px;
+  margin-left: -40px;
+  border-radius: 50%;
+
+  font-size: 1em;
+  text-shadow: 0 0 0.5em black;
+  text-align: center;
+}
+
+#progression 
+{
+    position: absolute;
+    top: 40px;
+    left: 35px;
+}

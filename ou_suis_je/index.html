@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+		<meta charset="utf-8">
+		<title>TP2 javascript</title>
+
+		<!-- Ajustement de la taille du viewport-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<!-- Importation de la feuille css d'animation-->
+	   <link rel="stylesheet" type="text/css" href="css/animation.css">
+	   <style>
+		a {
+	  text-align: center;
+	  color: darkgrey;
+	}
+	</style>
+	   <script src="./js/board.js"></script>
+		
+	
+</head>
+    <body>
+	<div class="timer"></div>
+	<h1>Où suis-je?</h1>
+	<p><a href="../index.html" id="retour">Retour</a></p>				
+	<p>Cliquez sur les cases afin de trouver la case secrète!</p>
+	<div id="mess"></div>
+	<form name="form1" action="" method="get">
+		<input type="text" name="setRows" id="setRows" value="10">
+		<p>X</p>
+		<input type="text" name="setColumns" id="setColumns" value="10">
+		<input type="button" name ="submit" value="Jouer" id="submit1">
+	</form>
+	<div id="statistics"></div>	
+	<div id="gameboard">
+	</div>
+	<form name="form2" action="" method="get">
+		<input type="button" name ="stats" value="Statistiques" id="submit2">
+	</form>
+	
+
+	<footer>
+		
+	</footer>
+	<script>
+
+		let oButton1 = document.getElementById("submit1");
+		let oButton2 = document.getElementById("submit2");
+
+		let gameBoardContainer = document.getElementById("gameboard");
+		
+		oButton1.addEventListener("click", function(){
+			moduleBoard.createBoard();
+		// execute la fonction jouer lorsqu'une cell est clickee
+		});
+
+ 		gameBoardContainer.addEventListener('click', function(){
+			moduleBoard.jouer(event);
+		}); 
+
+		oButton2.addEventListener("click", function(){
+			moduleBoard.statistiques();
+		// execute la fonction jouer lorsqu'une cell est clickee
+		});
+	</script>
+
+</body>

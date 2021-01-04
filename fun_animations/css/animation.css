@@ -1,0 +1,31 @@
+/*Animation pour section2*/
+@keyframes animatedBackground {
+
+	from { top: 200vh; }
+	to { top: -30%; }
+}
+
+@keyframes sphere { 
+	0% {transform: none;}
+  5% {transform: scaleX(1.0) scaleX(1.0);}
+	20% {transform: scale(1.2) scaleX(1.2);}
+  30% {transform: scale(1.0) scaleX(1.0) ;}
+  75%  {transform:  scale(1.5) scaleX(1.2) ;}
+  83%  {transform: scale(1.0) scaleX(1.0) ;}
+  100% {transform:none;} 
+
+}
+
+@keyframes rotation {
+
+	from {transform: rotate(0deg);}
+	to   {transform: rotate(360deg);}
+}
+
+
+@keyframes rotation2 {
+	from {transform: rotate(360deg);}
+	to   {transform: rotate(0deg);}
+}
+
+

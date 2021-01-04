@@ -1,0 +1,23 @@
+body {
+	width: 100%;
+	margin: 0 auto;
+}
+
+ul {
+	list-style-type: none;
+	margin: auto;
+}
+li a, .title {
+	display: block;
+	border: none;
+	text-align: center;
+	background-color: transparent;
+	color: darkgrey;
+	margin: 5vh auto;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.title {
+	font-size: 36px;
+}

@@ -1,0 +1,112 @@
+
+
+/*************************** CSS ANIMATIONS ****************************/
+
+/* Animation sur details apres reponse */
+#details{
+	animation-name: transparence;
+	animation-duration: 0.3s; 
+	animation-delay: 0.8s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in; 
+	}
+@keyframes transparence {
+	0% {
+		opacity: 0;
+		transform: translateX(100%) scaleX(5);
+
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0) scaleX(1);
+	}
+}
+
+
+/* Animation sur les choix de réponse en entrée */
+.choix{
+	animation-name: transparence;
+	animation-duration: 0.4s; 
+	animation-delay: 0.4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in; 
+	}
+@keyframes transparence {
+	0% {
+		opacity: 0;
+		transform: translateX(100%) scaleX(3);
+		transform: translateY(100%) scaleY(-.5);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0) scaleX(1);
+		transform: translateY(0) scaleY(1);
+	}
+}
+
+
+
+/* Animation sur les questions en entrée */
+#titreQuestion{
+	animation-name: titre;
+	animation-duration: 0.8s; 
+	animation-delay: 0.2s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in; 
+}
+@keyframes titre 
+{
+	0% 
+	{
+		opacity: 0;
+		transform: translateX(100%) scaleX(5);
+	}
+	100% 
+	{
+		opacity: 1;
+		transform: translateX(0) scaleX(1);
+	}
+}
+
+
+/* Animation sur les lettres H1 dans la fenêtre d'introduction avant le quiz */
+.intro h1
+{
+	animation-name: espaceLettres;
+	animation-duration: 0.6s; 
+	animation-timing-function: ease-in; 
+}
+@keyframes espaceLettres
+{
+	0%
+	{
+		letter-spacing: 20px;
+	}
+	100%
+	{
+		letter-spacing: 0px;
+	}
+}
+
+
+/* Animation sur les lettres H2 dans la fenêtre d'introduction avant le quiz */
+.intro h2
+{
+	opacity: 0;
+	animation-name: zoomLettres;
+	animation-duration: 0.6s; 
+	animation-delay: 1s;
+	animation-timing-function: ease-in; 
+	animation-fill-mode: forwards;
+}
+@keyframes zoomLettres
+{
+	0%
+	{
+		opacity: 0;
+	}
+	100%
+	{
+		opacity: 1;
+	}
+}

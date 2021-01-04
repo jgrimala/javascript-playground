@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Quiz - Travail Pratique 2</title>
+
+	<!-- Ajustement de la taille du viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Importation de la police d'icônes Awesome-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<script src="https://use.fontawesome.com/039279f0d1.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+
+	<!-- Importation de la feuille de style-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Importation de la feuille css d'animation-->
+	<link rel="stylesheet" type="text/css" href="css/animation.css">
+
+	<!-- Importation de la feuille css d'animation du progres-->
+	<link rel="stylesheet" type="text/css" href="css/progres.css">
+
+	<script type="module" src="./mjs/main.mjs"></script>
+
+	<style>
+		p, a {
+	  text-align: center;
+	  margin: 2vh auto;
+	}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div id="cont" data-pct="0">
+			<svg id="svg" width="100" height="100">
+				<circle r="45" cx="50" cy="50" fill="transparent" stroke-dasharray="282.74" stroke-dashoffset="0">
+				</circle>
+				<circle id="bar" r="45" cx="50" cy="50" fill="transparent" stroke-dasharray="282.74"
+					stroke-dashoffset="283"></circle>
+			</svg>
+			<div id="progression"></div>
+		</div>
+	</header>
+	<section class="quiz">
+		<div id="titreConteneur"></div>
+		<div id="lesChoix"></div>
+		<div><i id="suivant" class="fas fa-angle-double-right" style="font-size: 72px; color: white;"></i></div>
+		<p><a href="../index.html" id="retour">Retour</a></p>
+	</section>
+	<footer>
+	</footer>
+</body>
+
+</html>
